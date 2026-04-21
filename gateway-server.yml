@@ -4,25 +4,23 @@ server:
 spring:
   cloud:
     gateway:
-      server:
-        webflux:              # ← routes also under webflux now
-          routes:
-            - id: auth-service
-              uri: lb://auth-service
-              predicates:
-                - Path=/auth/**
+      routes:
+        - id: auth-service
+          uri: lb://auth-service
+          predicates:
+            - Path=/auth/**
 
-            - id: ai-service
-              uri: lb://ai-service
-              predicates:
-                - Path=/ai/**
+        - id: ai-service
+          uri: lb://ai-service
+          predicates:
+            - Path=/ai/**
 
-            - id: interview-service
-              uri: lb://interview-service
-              predicates:
-                - Path=/interview/**
+        - id: interview-service
+          uri: lb://interview-service
+          predicates:
+            - Path=/interview/**
 
-            - id: analytics-service
-              uri: lb://analytics-service
-              predicates:
-                - Path=/analytics/**
+        - id: analytics-service
+          uri: lb://analytics-service
+          predicates:
+            - Path=/analytics/**
