@@ -4,6 +4,7 @@ server:
 spring:
   cloud:
     gateway:
+     mvc:
       routes:
         - id: auth-service
           uri: lb://auth-service
