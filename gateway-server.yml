@@ -1,27 +1,30 @@
+# ✅ Correct for spring-cloud-gateway-server-webmvc
 server:
   port: 8081
 
 spring:
   cloud:
     gateway:
-     mvc:
-      routes:
-        - id: auth-service
-          uri: lb://auth-service
-          predicates:
-            - Path=/auth/**
+      mvc:
+        routes:
+          - id: auth-service
+            uri: lb://auth-service
+            predicates:
+              - Path=/auth/**
+            filters:
+              - StripPrefix=0    # keeps /auth/test as-is
 
-        - id: ai-service
-          uri: lb://ai-service
-          predicates:
-            - Path=/ai/**
+          - id: ai-service
+            uri: lb://ai-service
+            predicates:
+              - Path=/ai/**
 
-        - id: interview-service
-          uri: lb://interview-service
-          predicates:
-            - Path=/interview/**
+          - id: interview-service
+            uri: lb://interview-service
+            predicates:
+              - Path=/interview/**
 
-        - id: analytics-service
-          uri: lb://analytics-service
-          predicates:
-            - Path=/analytics/**
+          - id: analytics-service
+            uri: lb://analytics-service
+            predicates:
+              - Path=/analytics/**
