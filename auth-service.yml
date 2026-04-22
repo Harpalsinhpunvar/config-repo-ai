@@ -32,8 +32,23 @@ spring:
             client-id: ${GITHUB_CLIENT_ID}
             client-secret: ${GITHUB_CLIENT_SECRET}
             scope: user:email
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: ${MAIL_USERNAME}
+    password: ${MAIL_APP_PASSWORD}  # Gmail App Password, not account password
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
 
 jwt:
   secret: ${JWT_SECRET:404E635266556A586E3272357538782F413F4428472B4B6250645367566B5970}
   expiration: 900000          # 15 minutes
   refresh-expiration: 604800000  # 7 days
+
+app:
+  frontend-url: ${FRONTEND_URL:http://localhost:3000}
+  reset-token-expiry: 900000  # 15 minutes in ms
